@@ -382,7 +382,11 @@ foreach($result as $post_data){
                                             value="<?php echo $from_user_id;?>">
                                         <input type="hidden" name="chat_message" display="none"
                                             value="Is this Available">
-                                        <button type="submit" name="send_message"
+
+                                        <!-- here you should either choose to sumbit call a modal here or sumbit this form
+                                             or do both programatically from a function -->
+                                        <!-- i set it to calling the modal -->
+                                        <button type="button" name="send_message"
                                             class="btn btn-success btn-round pull-right submit" data-toggle="modal"
                                             data-target="#myModal">
                                             <i class="now-ui-icons shopping_cart-simple"></i>Send Message</button>
@@ -690,7 +694,11 @@ foreach($result as $post_data){
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <script src='js/jquery.js'></script>
+    <!-- unneccesary jquery import
+         you can uncomment the import below
+         if it's a script you wrote yourself --> 
+
+    <!-- <script src='js/jquery.js'></script> -->
     <script>
     function triggerClick() {
         document.querySelector('#profileImage').click();
@@ -732,11 +740,8 @@ foreach($result as $post_data){
 
 
         $(document).on('click', '.view_user', function() {
-
             var user_id = $(this).attr('id');
             if (confirm("Wants to view Profile")) {
-
-
                 $.ajax({
                     url: "view_profile.php",
                     method: "POST",
@@ -745,18 +750,22 @@ foreach($result as $post_data){
                     },
                     success: function(data) {
                         $("#userprofile").html(data);
-
                     }
                 })
-
             }
-
         });
     });
     </script>
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+
+<!-- unneccesary jquery import
+         you can uncomment the import below
+         if it's a script you wrote yourself -->
+
+<!-- <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script> -->
+
+
 <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -785,29 +794,24 @@ function scrollToDownload() {
 // Here is where i wrote the javascript to prevent page reload for comment form
 $(document).ready(function() {
 
-
-    $("#comment1").on('submit', function(e) {
-
-
+    $("#comment1").submit((e)=>{
+        e.preventDefault();
         var form_data = $(this).serialize();
         $.ajax({
             type: "POST",
             url: "add_comment.php",
             data: form_data,
             success: function() {
-
                 $('#comment1')[0].reset();
                 alert('comment sent');
-
             }
 
         })
-        e.preventDefault();
+
     });
     // Here is where i wrote the javascript to prevent page reload for sendMessage button  
-    $("#sendmessage").on('submit', function(e) {
-
-
+    $("#sendmessage").submit((e)=>{
+        e.preventDefault();
         var form_data = $(this).serialize();
         $.ajax({
             type: "POST",
@@ -823,14 +827,11 @@ $(document).ready(function() {
             }
 
         })
-        e.preventDefault();
     });
 
     // Here is where i wrote the javascript to prevent page reload for Uploading button
-    $("#formdata").on('submit', function(e) {
-
+    $("#formdata").submit((e)=>{
         e.preventDefault();
-
         $.ajax({
             url: "upload.php",
             method: "POST",
