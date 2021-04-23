@@ -8,6 +8,7 @@
     }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" class="img-fluid" href="../assets/epsimage/icon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>E-ps pawn</title>
+    <title>E-Ps pawn</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -30,6 +31,19 @@
     <!--     inserted     -->
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
 
+    <style type="text/css">
+      tr td{
+        padding-top:-10px!important;
+        border: 1px solid #000;
+      }
+      @media print {
+          .btn-print {
+            display:none !important;
+          }
+      }
+    </style>
+
+
 </head>
 <body class="index-page sidebar-collapse">
     <div class="wrapper"><br>
@@ -42,129 +56,90 @@
                                  $row=mysqli_fetch_array($query);
                                  $cid=$row['user_id'];
                                  echo $row['firstname'];
-                                ?>'s Shopping Cart
+                                ?>'s Checking Out!
                       </h2>
-                      <a class="btn btn-primary btn-round" href="user_index.php"><i class="now-ui-icons shopping_basket"></i> &nbsp Shop more items</a>
                       <hr color="orange"> 
                 
                 <div class="col-md-12">
                 <br>
             
                 <div class="panel panel-success panel-size-custom">
-                        <div class="panel-body">
+                        <div class="panel-body">  
 
 
 
+    <center>
+	
+    <?php
+    $user_id = $_SESSION['id'];
+
+	include('../config/dbconn.php');
+    $query=mysqli_query($dbconn,"SELECT * FROM `users` WHERE user_id='".$_SESSION['id']."'");
+    $row=mysqli_fetch_array($query);
+    $firstname=$row['firstname'];
+    $middlename=$row['middlename'];
+    $lastname=$row['lastname'];
+    $email=$row['email'];
+    $contact=$row['contact'];
 
 
-      <?php 
-        $user_id = $_SESSION['id'];
+                        
+$query = mysqli_query($dbconn,"SELECT * FROM order_details WHERE user_id='$user_id' AND order_id=''") or die (mysqli_error());
+$row3 = mysqli_fetch_array($query);
+$count = mysqli_num_rows($query);
+$prod_id=$row3['prod_id'];
+$qty= $row3['prod_qty'];
 
-        $query3=mysqli_query($dbconn,"SELECT * FROM order_details WHERE user_id='$user_id' AND order_id=''") or die (mysql_error());
-        $count2=mysqli_num_rows($query3);
-      ?>
-
-
-<?php
-                  
-
-
-                                    if (isset($_POST['submit'])) {
-
-                                        $order_id=$_GET['order_id'];
-                                        $prod_qty = $_POST['prod_qty'];
-                                        $total = $_POST['prod_qty']*$_POST['total'];
-
-                                        date_default_timezone_set('Asia/Manila');
-                                        $date = date("Y-m-d H:i:s");      
-
-                         mysqli_query($dbconn,"UPDATE order_details SET
-                          prod_qty='$prod_qty',total='$total' WHERE order_details_id='$order_id'") 
-                     or die(mysqli_error());
-                                            ?>
-
-                                              <script type="text/javascript">
-                                                alert("Quantity Updated");
-                                                window.location= "user_cart.php";
-                                            </script>
+$query2=mysqli_query($dbconn,"SELECT * FROM products WHERE prod_id='$prod_id'") or die (mysqli_error());
+$row2=mysqli_fetch_array($query2);
+$prod_qty=$row2['prod_qty'];
 
 
-                                            <?php
-                                    }
-                                    ?>
+ mysqli_query($dbconn,"UPDATE products SET prod_qty = prod_qty - $qty WHERE prod_id ='$prod_id' AND prod_qty='$prod_qty'");
+       
 
-<form method="post">
+$cart_table = mysqli_query($dbconn,"SELECT sum(total) FROM order_details WHERE user_id='$user_id' AND order_id=''") or die(mysqli_error());
+       $cart_count = mysqli_num_rows($cart_table);
+       
+        while ($cart_row = mysqli_fetch_array($cart_table)) {
 
-  <h5>[ <small><?php echo $count2;?> </small>] types of item.</h5>  
+           $total = $cart_row['sum(total)'];
+           date_default_timezone_set('Asia/Manila');
+           $date = date("Y-m-d H:i:s");
+           $tax=$total * 0.12;
+           $track_num= $user_id.$user_id+1000;
+           $shipaddress=$_POST['shipaddress'];
+           $city=$_POST['city'];
+           $ship_add=$shipaddress .' '. $city;    
+           echo '********* Your tracking number: '.$track_num.' | ';  
+           echo 'Total: Php'.$total.' | ';
+           echo 'Tax: Php'.$tax.' | '; 
+           echo 'Shipping Address: '.$ship_add.' *********';
 
-  <button type="submit" name="submit" class="btn btn-success btn-round">Update</button> 
+$query = "INSERT INTO order (user_id, track_num, firstname, middlename, lastname, email, contact, shipping_add, order_date, status, totalprice, tax) 
+        VALUES ('$user_id','$track_num','$firstname','$middlename','$lastname','$email','$contact','$ship_add','$date','Pending',,'$total','$tax')";  
+        $result = mysqli_query($dbconn,$query);
 
-  
-  <table class="table table-bordered table-condensed">
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Description</th>
-                  <th width="100">Quantity</th>
-                  <th width="100">Price(#)</th>
-                  <th width="100">Total(#)</th>
-        </tr>
-              </thead>
-              <tbody>
-                <?php 
-                      $user_id = $_SESSION['id'];
-                      $order_id=$_GET['order_id'];
-
-                $query=mysqli_query($dbconn,"SELECT * FROM order_details WHERE order_details_id='$order_id'") or die (mysqli_error());
-                $row=mysqli_fetch_array($query);
-                $count=mysqli_num_rows($query);
-                $prod_id=$row['prod_id'];
-                $query2=mysqli_query($dbconn,"SELECT * FROM products WHERE prod_id='$prod_id'") or die (mysqli_error());
-                $row2=mysqli_fetch_array($query2);
-                $prod_qty=$row2['prod_qty'];
-
-                ?>
-        <tr>
+ mysqli_query($dbconn,"UPDATE order_details SET order_id=order_id+1 WHERE user_id='$user_id' AND order_id=''")or die(mysqli_error());
+mysqli_query ($dbconn,"UPDATE order_details SET total_qty =$prod_qty - $qty WHERE prod_id ='$prod_id' AND total_qty='' ");           
 
 
-                  <td> <img width="150" height="100" src="../uploads/<?php echo $row2['prod_pic1'];?>" alt=""/></td>
-                  <td><b><?php echo $row2['prod_name'];?></b><br><br>
-                          <?php $string=$row2['prod_desc'];?></td>
-          <td>
-      <div class="input-append">
-      <?php
-  echo "<select class='btn btn-warning btn-round dropdown-toggle' size='1' name='prod_qty' id='prod_qty'>";
-$i=1; $prod_qty=$prod_qty;
-while ($i <= $prod_qty ){
-    echo "<option value=".$i.">".$i."</option>";
-    $i++;
 }
-echo "</select>";
+
 ?>
-
-     </div>
-
-
-          </td>
-                  <td><?php  echo $row2['prod_price']; ?></td>
-                  <td><?php echo $row['total']; ?></td>
-              <input type="hidden" name="total" value="<?php echo $row2['prod_price'];?>">
-                </tr>
         
- 
-        </tbody>
-            </table>
-    
-    
-           
+        <hr color="orange"> 
+        <br><br>
+        <h3>Payment type will be a <b>Cash On Delivery</b></h3>
+        <h3>Delivery process time, minimum of three(3) days and maximum of five(5) working days.</h3><br>
+        <h5>Start Technology, Inc.</h5>
         
-  <a href="user_cart.php" class="btn btn-large"><i class="icon-arrow-left"></i> Cancel </a>
+     <button type="button" class="btn btn-warning btn-round" onclick = "window.print()"><span class="now-ui-icons ui-1_check"></span> Print</button> 
+     <a href="user_index.php"><button type="button" class="btn btn-success btn-round"><span class="now-ui-icons ui-1_check"></span> Back to Homepage</button></a>
+    
+    </center>
 
-</form>
-
-
-
-
+</div>
 
 
 
@@ -192,7 +167,7 @@ echo "</select>";
                     &copy;
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>, Designed and Coded by Serve(8) Start Technology, Inc.
+                    </script>, Designed and Coded by Serve(5) Start Technology, Inc.
                 </div>
             </div>
         </footer>

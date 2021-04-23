@@ -90,14 +90,10 @@
 
             $query2=mysqli_query($dbconn,"SELECT * FROM products WHERE prod_id='$prod_id'") or die (mysqli_error());
             $row2=mysqli_fetch_array($query2);
-
-            
-            $query3=mysqli_query($dbconn,"SELECT * FROM user_post WHERE post_id='$prod_id'") or die (mysqli_error());
-            $row3=mysqli_fetch_array($query3);
           ?>
 
               <tr>
-                  <td> <img width="150" height="100" src="../uploads/<?php echo $row2['prod_pic1'] && $row3['post_pic'];?>" alt=""/></td>
+                  <td> <img width="150" height="100" src="../uploads/<?php echo $row2['prod_pic1'];?>" alt=""/></td>
                   <td><b><?php echo $row2['prod_name'];?></b><br><br>
                     <?php echo $row2['prod_desc'];
                     ?>
@@ -142,7 +138,7 @@
 
                 <script type="text/javascript">
                   alert("Shopping Cart Empty! Add an item.");
-                  window.location= "post_index.php";
+                  window.location= "user_index.php";
                 </script>
 
                <?php
