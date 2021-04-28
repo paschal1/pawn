@@ -1,28 +1,3 @@
-<!--head background-->
-<a href="index.php">
-    <div style="position:absolute;left:0%;top:0%; height:13.2%; width:100%; z-index:-1;background-color:#fd5521;">
-    </div>
-    <!--text: pawn -->
-    <div
-        style="position:absolute;left:30.5%; top:3.3%; font-size:45; font-weight:900; color:#FFFFFF; font-weight:bold;">
-        <font face="myFbFont"> PAWN </font>
-    </div>
-    <!--body background-->
-    <div style="position:absolute;left:0%;top:13.2%; height:90%; width:100%; z-index:-1;"> </div>
-    <!-- <-- bottom background -->
-    <div style="position:absolute;left:0%;top:110%; height:5%; width:100%; z-index:-1; "> </div>
-</a>
-<div style="position:absolute;left:20%;top:105%;">
-    <font face="myFbFont"> <span style=" color:#3B5998;" onMouseOver="open_developer_details()"
-            onMouseOut="close_developer_details()" id="my_name"> (EPS PAWN) powered by Starite Inc </span> </font>
-</div>
-<div style="position:absolute;left:20%;top:18%;">
-    <font face="myFbFont"> <span style=" color:#3B5998;" onMouseOver="open_developer_details()"
-            onMouseOut="close_developer_details()" id="my_name"> (EPS PAWN) powered by Starite Inc </span> </font>
-</div>
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -81,6 +56,33 @@
 </head>
 
 <body>
+
+    <!--head background-->
+    <a href="index.php">
+
+
+
+        <div style="position:absolute;left:0%;top:0%; height:13.2%; width:100%; z-index:-1;background-color:#fd5521;">
+        </div>
+        <!--text: pawn -->
+        <div
+            style="position:absolute;left:30.5%; top:3.3%; font-size:45; font-weight:900; color:#FFFFFF; font-weight:bold;">
+            <font face="myFbFont"> PAWN </font>
+        </div>
+        <!--body background-->
+        <div style="position:absolute;left:0%;top:13.2%; height:90%; width:100%; z-index:-1;"> </div>
+        <!-- <-- bottom background -->
+        <div style="position:absolute;left:0%;top:110%; height:5%; width:100%; z-index:-1; "> </div>
+        <div style="position:absolute;left:20%;top:105%;">
+            <font face="myFbFont"> <span style=" color:#3B5998;" onMouseOver="open_developer_details()"
+                    onMouseOut="close_developer_details()" id="my_name"> (EPS PAWN) powered by Starite Inc </span>
+            </font>
+        </div>
+        <div style="position:absolute;left:20%;top:18%;">
+            <font face="myFbFont"> <span style=" color:#3B5998;" onMouseOver="open_developer_details()" </font>
+        </div>
+
+    </a>
 
     <div class="sidenav">
         <a href="">

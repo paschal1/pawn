@@ -14,8 +14,8 @@
      <script>
      setInterval(
          function() {
-             $('#content').load('loader.php');
-         }, 20000);
+             $('#content').load('action.php');
+         }, 9000);
      </script>
 
  </head>

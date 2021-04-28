@@ -22,12 +22,10 @@ include("index_background.php");
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="icon" type="image/png" class="img-fluid" href="epsimage/icon.PNG">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-
-
+    <link rel="shortcut icon" href="epsimage/icon.png" type="image/png">
+    <link rel="icon" type="image/png" class="img-fluid" href="epsimage/icon.PNG">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eps||post||now</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -38,7 +36,6 @@ include("index_background.php");
     <!-- CSS Files -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
-    <link href="post_index.css" rel="stylesheet" />
 
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -156,33 +153,35 @@ include("index_background.php");
                             <!-- form for posting goes here -->
                             <div class="container">
                                 <!-- i want the page note to reload when submit button is clicked -->
-                                <form method="post" action="" enctype="multipart/form-data" name="post_pic"
-                                    id="Formdata">
+
+                                <form method="post" action="upload.php" enctype="multipart/form-data" name="post_pic"
+                                    id="formatad">
                                     <div style="position:absolute; left:37.5%; top:21.5%;" class="form-group ">
-                                        <textarea class="form-control" style="height:70; width:450; border:none;"
+                                        <textarea class="form-control" style="height:70; width:100%; border:none;"
                                             name="post_txt" maxlength="511"
                                             placeholder="what do you want to tell potential buyers?"
                                             id="post_txt"></textarea>
                                     </div>
-                                    <div style="position:absolute; left:36.3%; top:35%; width:5.9%;" class="form-group">
+                                    <div style="position:absolute; left:36.3%; top:35%; width:13.9%;"
+                                        class="form-group">
                                         <input type="text" name="price" class="form-control"
                                             style="height:30; width:100;" placeholder="Enter Price" id="price">
                                     </div>
                                     <div style="position:absolute; left:44.7%; top:35%; " class="form-group ">
                                         <input type="text" name="qty" class="form-control"
-                                            style="height:30; width:100; " placeholder="Enter Qty" id="qty">
+                                            style="height:30; width:55.9%; " placeholder="Enter Qty" id="qty">
                                     </div>
                                     <input type="hidden" name="post_time">
-                                    <div style="position:absolute; left:62%; top:33.9%;" class="form-group ">
-                                        <select style="background: transparent; border-bottom:5px; border:none;" c c
-                                            class="btn" name="priority" id="priority">
-                                            <option value=" Public"> Public </option>
+                                    <div style="position:absolute; left:62%; top:35%;" class="form-group ">
+                                        <select style="background: transparent; border-bottom:5px; padding: 2px; "
+                                            name="priority" class="form-control" id="priority">
+                                            <option value="Public"> Public </option>
                                             <option value="Private"> Only me </option>
                                         </select>
                                     </div>
                                     <div style="position:absolute; left:53%; top:35%; ">
-                                        <span><img src="img/download.JPEG" style=" height:20; width:20;" id="post_img"
-                                                onclick="triggerClick()" /> Add Photo </span>
+                                        <span><img src="img/download.JPEG" style=" height:20px; width:20px;"
+                                                id="post_img" onclick="triggerClick()" /> Add Photo </span>
                                     </div>
                                     <div style="position:absolute; left:34%; top:65%;" class="form-group"
                                         id="error_profileImage">
@@ -200,8 +199,7 @@ include("index_background.php");
                         </div>
                     </div>
 
-                    <div
-                        style="position:absolute;left:37.4%; top:40%; height:1; width:37.05%; background-color:#CCCCCC; ">
+                    <div style="position:absolute;left:37.4%; top:40%; height:1; width:37.05%;">
                         <br>
 
 
@@ -271,7 +269,7 @@ include("index_background.php");
                                 ?>
 
 
-                                <div>
+                                <div class="container ">
 
                                     <div style="padding-top:4px; padding-bottom:7px;">
                                         <?php if ($user_pic != "") : ?>
@@ -286,7 +284,7 @@ include("index_background.php");
                                     </div>
 
                                     <?php if ($post_img != "") : ?>
-                                    <img src="../uploads/<?php echo $post_img; ?>" width="100%" height="100px"
+                                    <img src="../uploads/<?php echo $post_img; ?>" width="50%" height="10px"
                                         class="img-thumbnail" />
 
                                     <?php else : ?>
@@ -317,23 +315,24 @@ include("index_background.php");
                                     </form>
                                     <!-- this is one of the form causing the issue with this form send message to user who
                                     post i want the page note to reload when submit button is clicked -->
+
                                     <form method="post" action="" data-sendmessage-form-id="<?php echo $loop_key; ?>">
                                         <input type="hidden" name="to_user_id" display="none"
-                                            value="<?php echo $user_id; ?>">
+                                            value="<?php echo $user_id;?>">
 
                                         <input type="hidden" name="from_user_id" display="none"
-                                            value="<?php echo $from_user_id; ?>">
+                                            value="<?php echo $from_user_id;?>">
                                         <input type="hidden" name="chat_message" display="none"
                                             value="Is this Available">
-
-                                        <!-- here you should either choose to submit call a modal here or submit this form
-                                             or do both programmatically from a function -->
-                                        <!-- i set it to calling the modal -->
-                                        <button type="button" name="send_message"
-                                            class="btn btn-success btn-round pull-right submit" data-toggle="modal"
+                                        <button type="submit" name="send_message"
+                                            class="btn btn-success btn-round pull-center submit" data-toggle="modal"
                                             data-target="#myModal">
                                             <i class="now-ui-icons shopping_cart-simple"></i>Send Message</button>
                                     </form>
+                                    <!-- here you should either choose to submit call a modal here or submit this form
+                                             or do both programmatically from a function -->
+                                    <!-- i set it to calling the modal -->
+
                                     </span>
 
                                     <?php
@@ -384,7 +383,8 @@ include("index_background.php");
                                         onMouseOut="Comment_NounderLine(<?php echo $post_id; ?>)"
                                         id="comment<?php echo $post_id; ?>">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span style="color:#999999;"> <?php// echo $post_data[]; ?> </span> </span>
+                                    <span style="color:#999999;"> </span>
+                                </span>
                             </div>
 
                             <?php
@@ -401,7 +401,8 @@ include("index_background.php");
                                 <td> </td>
                                 <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"><img
                                         src="../uploads/profile/<?php echo $user_pic; ?> " height="20px" width="20px"
-                                        border-radius="50px" /> <?php echo '<b>' . $user_name . '</b>'; ?>
+                                        border-radius="50px" />
+                                    <?php echo '<b>' . $user_name . '</b>'; ?>
                                     <?php echo '<b>' . $user_name2 . '</b>'; ?>
                                     <?php echo '<b>' . $user_name3 . '</b>'; ?>
                                     <?php echo $cline1; ?></td>
@@ -413,12 +414,14 @@ include("index_background.php");
                                 ?>
                             <tr>
                                 <td> </td>
-                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
+                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                    <?php echo $cline1; ?></td>
                             </tr>
                             <tr>
                                 <td> </td>
                                 <td bgcolor="#EDEFF4"> </td>
-                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
+                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                    <?php echo $cline2; ?></td>
                             </tr>
                             <?php
                                                 } else if ($clen > 120 && $clen <= 180) {
@@ -428,17 +431,20 @@ include("index_background.php");
                                 ?>
                             <tr>
                                 <td> </td>
-                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?></td>
+                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                    <?php echo $cline1; ?></td>
                             </tr>
                             <tr>
                                 <td> </td>
                                 <td bgcolor="#EDEFF4"> </td>
-                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?></td>
+                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                    <?php echo $cline2; ?></td>
                             </tr>
                             <tr>
                                 <td> </td>
                                 <td bgcolor="#EDEFF4"> </td>
-                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?></td>
+                                <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                    <?php echo $cline3; ?></td>
                             </tr>
                             <?php
                                                 } else if ($clen > 180 && $clen <= 240) {
@@ -450,25 +456,29 @@ include("index_background.php");
                             <table>
                                 <tr>
                                     <td> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline1; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline2; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline3; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline4; ?>
                                     </td>
                                 </tr>
                                 <?php
@@ -481,31 +491,36 @@ include("index_background.php");
                                     ?>
                                 <tr>
                                     <td> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline1; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline2; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline3; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline4; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline5; ?>
                                     </td>
                                 </tr>
                                 <?php
@@ -519,37 +534,43 @@ include("index_background.php");
                                     ?>
                                 <tr>
                                     <td> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline1; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline2; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline3; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline4; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline5; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline6; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline6; ?>
                                     </td>
                                 </tr>
                                 <?php
@@ -564,43 +585,50 @@ include("index_background.php");
                                     ?>
                                 <tr>
                                     <td> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline1; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline1; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline2; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline2; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline3; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline3; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline4; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline4; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline5; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline5; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline6; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline6; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td> </td>
                                     <td bgcolor="#EDEFF4"> </td>
-                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2"> <?php echo $cline7; ?>
+                                    <td bgcolor="#EDEFF4" style="padding-left:7;" colspan="2">
+                                        <?php echo $cline7; ?>
                                     </td>
                                 </tr>
                             </table>
@@ -770,32 +798,30 @@ $(document).ready(function() {
         });
     });
 
-
-
     // Here is where i wrote the javascript to prevent page reload for Uploading button
-    $("#formdata").submit((e) => {
-        e.preventDefault();
-        $.ajax({
-            url: "upload.php",
-            method: "POST",
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success: function(data) {
-                $('#postimage').val();
-                $('#formdata')[0].reset();
-                alert('post sent');
 
-            }
+    // $('#formdata').submit((e) => {
+    //             e.preventDefault();
+    //             $.ajax({
+    //                         url: "upload.php",
+    //                         method: "POST",
+    //                         data: new FormData(this),
+    //                         contentType: false,
+    //                         processData: false,
+    //                         success: function(data) {
+    // $('#postimage').val();
+    //             $(this).reset();
+    //             alert('post sent');
 
-        })
+    //         }
 
-    });
+    //     })
+    // });
 
 
 });
 </script>
-<script type="text/javascript" src="Profile_js/allsend.js">
+<!-- <script type="text/javascript" src="Profile_js/allsend.js"> -->
 
 
 </script>

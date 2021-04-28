@@ -139,8 +139,7 @@ if(isset($_POST['comment']))
                             autocomplete="off"> </div>
                     <div class="form-group" style="position:absolute;left:81.8%;top:5.2%; "> <input class="form-control"
                             type="submit" name="search" value="search" /> </div>
-                    <div style="position:absolute;left:90.8%;top:4.2%; "> <a href=""><img src="img/pawn-logo.PNG"
-                                class="img-fluid" width=20px height=30px></a> </div>
+
                     <div class="countryList" id="countryList" style="postion:absolute; width:235px; z-index:1001;">
                     </div>
                 </form>
@@ -152,7 +151,7 @@ if(isset($_POST['comment']))
                 </div>
                 <div style="position:absolute;left:37.1%; display:none; top:32%; height:9.8%; width:5.9%; background-color:#F6F7F8; z-index:1;"
                     id="about_txt_background"> </div>
-                <div style="position:absolute;left:38.3%; top:35%; font-weight:bold; z-index:1;"> <a href="info.php"
+                <!-- <div style="position:absolute;left:38.3%; top:35%; font-weight:bold; z-index:1;"> <a href="info.php"
                         style="text-decoration:none; color:#3B59B0;" onMouseOver="on_about_txt();"
                         onMouseOut="out_about_txt();"> About </a> </div>
                 <div style="position:absolute;left:43.1%; display:none; top:32%; height:9.8%; width:8.4%; background-color:#F6F7F8; z-index:1;"
@@ -160,46 +159,51 @@ if(isset($_POST['comment']))
                 <div style="position:absolute;left:44.7%; top:35%; font-weight:bold; z-index:1; color:#3B59B0;"> <a
                         href="photo.php" style="text-decoration:none; color:#3B59B0;" onMouseOver="on_photos_txt();"
                         onMouseOut="out_photos_txt();"> Photos </a> <samp style="color:#717171;"> <?php ?> </samp>
-                </div>
+                </div> -->
 
 
 
 
                 <!-- form for posting goes here -->
                 <div class="container">
+                    <!-- i want the page note to reload when submit button is clicked -->
+
                     <form method="post" action="upload.php" enctype="multipart/form-data" name="post_pic" id="formdata">
                         <div style="position:absolute; left:37.5%; top:21.5%;" class="form-group ">
-                            <textarea class="form-control" style="height:70; width:450; border:none;" name="post_txt"
+                            <textarea class="form-control" style="height:70; width:100%; border:none;" name="post_txt"
                                 maxlength="511" placeholder="what do you want to tell potential buyers?"
                                 id="post_txt"></textarea>
                         </div>
-                        <div style="position:absolute; left:60.5%; top:21.5%;" class="form-group ">
-                            <input type="text" name="price" class="form-control" style="height:50; width:100;"
+                        <div style="position:absolute; left:36.3%; top:35%; width:13.9%;" class="form-group">
+                            <input type="text" name="price" class="form-control" style="height:30; width:100;"
                                 placeholder="Enter Price" id="price">
                         </div>
+                        <div style="position:absolute; left:44.7%; top:35%; " class="form-group ">
+                            <input type="text" name="qty" class="form-control" style="height:30; width:55.9%; "
+                                placeholder="Enter Qty" id="qty">
+                        </div>
                         <input type="hidden" name="post_time">
-                        <div style="position:absolute; left:62%; top:33.9%;" class="form-group ">
-                            <select style="background: transparent; border-bottom:5px;" name="priority"
+                        <div style="position:absolute; left:62%; top:35%;" class="form-group ">
+                            <select style="background: transparent; border-bottom:5px; padding: 2px; " name="priority"
                                 class="form-control" id="priority">
                                 <option value="Public"> Public </option>
                                 <option value="Private"> Only me </option>
                             </select>
                         </div>
                         <div style="position:absolute; left:53%; top:35%; ">
-                            <span><img src="img/download.JPEG" style=" height:20; width:20;" id="post_img"
+                            <span><img src="img/download.JPEG" style=" height:20px; width:20px;" id="post_img"
                                     onclick="triggerClick()" /> Add Photo </span>
                         </div>
                         <div style="position:absolute; left:34%; top:65%;" class="form-group" id="error_profileImage">
-                            <input type="file" id="profileImage" id="post_pic" onchange="displayImage(this)"
+                            <input type="file" id="profileImage" id="postimage" onchange="displayImage(this)"
                                 name="post_pic" style="display:none;" multiple>
                         </div>
                         <div style="position:absolute; left:69.5%; top:25%; " id="upload" class="form-group">
-                            <input class="btn btn btn-default" type="submit" value="Upload" name="file"
+                            <input class="btn btn btn-default submit" type="submit" value="Upload" name="file"
                                 id="profileImage" onClick="time_get()" />
                         </div>
                     </form>
-                    <div
-                        style="position:absolute;left:37.4%; top:40%; height:1; width:37.05%; background-color:#CCCCCC; ">
+                    <div style="position:absolute;left:37.4%; top:40%; height:1; width:37.05%;  ">
                         <br>
                         <div <?php //echo $count_bg1+3; ?>> </div>
 
@@ -276,7 +280,7 @@ foreach($result as $post_data){
                                     </div>
 
                                     <?php if($post_img != ""):?>
-                                    <img src="../users/<?php echo $post_img; ?>" width="450px" height="100px"
+                                    <img src="../uploads/<?php echo $post_img; ?>" width="450px" height="100px"
                                         class="img-thumbnail" />
 
                                     <?php else: ?>

@@ -121,7 +121,7 @@ foreach($result2 as $fetch_user_pic){
                     <input type="hidden" name="to_user_id" display="none" value="<?php echo $user_id;?>">
 
                     <input type="hidden" name="from_user_id" display="none" value="<?php echo $from_user_id;?>">
-                    <input type="hidden" name="chat_message" display="none" value="Is this Avaliable">
+                    <input type="hidden" name="chat_message" display="none" value="Is this Available">
                     <button type="submit" name="send_message" class="btn btn-success btn-round pull-right submit"
                         data-toggle="modal" data-target="#myModal">
                         <i class="now-ui-icons shopping_cart-simple"></i>Send Message</button>
@@ -164,7 +164,7 @@ $count = $statement->rowCount();
             onClick="Comment_focus(<?php echo $post_id; ?>);" onMouseOver="Comment_underLine(<?php echo $post_id; ?>)"
             onMouseOut="Comment_NounderLine(<?php echo $post_id; ?>)" id="comment<?php echo $post_id; ?>">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span style="color:#999999;"> <?php// echo $post_data[4]; ?> </span> </span>
+        <span style="color:#999999;"> </span> </span>
     </div>
 
     <?php
@@ -433,6 +433,6 @@ $(document).ready(function() {
     });
 });
 </script>
-<script type="text/javascript" src="Profile_js/allsend.js"> </script>
+
 
 </html>
