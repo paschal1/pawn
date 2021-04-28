@@ -22,10 +22,11 @@ include("index_background.php");
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="shortcut icon" href="epsimage/icon.png" type="image/png">
     <link rel="icon" type="image/png" class="img-fluid" href="epsimage/icon.PNG">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eps||post||now</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -78,82 +79,67 @@ include("index_background.php");
     });
     </script>
 
+    <style>
+    .wrapper {
+        width: 500px;
+        margin: 0 auto;
+    }
+    </style>
 </head>
-
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
-
 <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
 <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
 
 <body>
-
     <section>
-        <div class="bg">
-
+        <div class="wrapper">
             <div class="container-fluid">
                 <!-- form for searching goes here -->
-
                 <form method="POST" class="navbar-form navbar-right" action="post_index_search.php">
-                    <div class="form-group" style="position:absolute;left:75.6%; top:5.18%; font-size:13px; "> <input
+                    <div class="form-group" style="position:absolute;left:75.6%; top:5.18%; font-size:13px; "><input
                             type="submit" title="Search" class="form-control" value="search"
                             class="form control search-query" src="assets/img/search.png" alt="Search" /></div>
-                    <div class="form-group" style="position:absolute;left:81.8%;top:5.2%; "> <input type="text"
+                    <div class="form-group" style="position:absolute;left:81.8%;top:5.2%; "><input type="text"
                             name="search" class="form-control" class="form control search-query"
                             placeholder="Search Pawn Users" onkeydown="searchq()" style="width:149.5;"></div>
                     <div class="countryList" id="countryList" style="position:absolute; width:235px; z-index:1001;">
                     </div>
-
                 </form>
-
-
-                <div style="position:absolute;left:85.6%; top:14.8%;"> <a href="chat.php" style="text-decoration:none;">
-                        <input type="button" value="Chats" id="sign_button" class="btn default"> </a> </div>
-
-
-
+                <div style="position:absolute;left:85.6%; top:14.8%;"><a href="chat.php"
+                        style="text-decoration:none;"><input type="button" value="Chats" id="sign_button"
+                            class="btn default"></a></div>
                 <div style="position:absolute; left:76.4%; top:26.2%;">
-                    <font size="4"> Pawn Chats </font>
+                    <font size="4"></font>
                 </div>
                 <div style="position:absolute; left:85%; top:30%; color:black; font-size:11px;">
                     <font face="myFbFont">Meet with People and make more sells. </font>
                 </div>
-
                 <div
                     style="position:absolute;left:75.4%; top:32.8%; height:1; width:22.05%; background-color:#CCCCCC; ">
-
                 </div>
                 <!-- users details fetched goes here -->
                 <div style="position:absolute;left:75.4%; top:32.8%; margin:2px;" class="data">
                     <table class="table" id="tablelettercard">
                         <thead>
-
                             <div scope="col" style="padding:15px; font-style: inherit;
-        font-family: 'Times New Roman', Times, serif; font-size:20px;">Members</div>
+font-family: 'Times New Roman',
+    Times,
+    serif;
+    font-size:20px;
+    ">Pawn Chats</div>
 
 
                         </thead>
-                        <tbody id="userdata">
-
-                        </tbody>
+                        <tbody id="userdata"></tbody>
                     </table>
-
-
-
                 </div>
-
-
-
-
-
-
                 <div class="container">
                     <div class="row">
                         <div>
                             <!-- form for posting goes here -->
                             <div class="container">
                                 <!-- i want the page note to reload when submit button is clicked -->
-
                                 <form method="post" action="upload.php" enctype="multipart/form-data" name="post_pic"
                                     id="formatad">
                                     <div style="position:absolute; left:37.5%; top:21.5%;" class="form-group ">
@@ -163,50 +149,39 @@ include("index_background.php");
                                             id="post_txt"></textarea>
                                     </div>
                                     <div style="position:absolute; left:36.3%; top:35%; width:13.9%;"
-                                        class="form-group">
-                                        <input type="text" name="price" class="form-control"
+                                        class="form-group"><input type="text" name="price" class="form-control"
                                             style="height:30; width:100;" placeholder="Enter Price" id="price">
                                     </div>
                                     <div style="position:absolute; left:44.7%; top:35%; " class="form-group ">
                                         <input type="text" name="qty" class="form-control"
                                             style="height:30; width:55.9%; " placeholder="Enter Qty" id="qty">
-                                    </div>
-                                    <input type="hidden" name="post_time">
+                                    </div><input type="hidden" name="post_time">
                                     <div style="position:absolute; left:62%; top:35%;" class="form-group ">
                                         <select style="background: transparent; border-bottom:5px; padding: 2px; "
                                             name="priority" class="form-control" id="priority">
-                                            <option value="Public"> Public </option>
-                                            <option value="Private"> Only me </option>
+                                            <option value="Public">Public </option>
+                                            <option value="Private">Only me </option>
                                         </select>
                                     </div>
-                                    <div style="position:absolute; left:53%; top:35%; ">
-                                        <span><img src="img/download.JPEG" style=" height:20px; width:20px;"
-                                                id="post_img" onclick="triggerClick()" /> Add Photo </span>
+                                    <div style="position:absolute; left:53%; top:29.1%; "><span><img
+                                                src="img/download.JPEG" style=" height:20px; width:20px;" id="post_img"
+                                                onclick="triggerClick()" />Add Photo </span>
                                     </div>
-                                    <div style="position:absolute; left:34%; top:65%;" class="form-group"
-                                        id="error_profileImage">
-                                        <input type="file" id="profileImage" id="postimage"
+                                    <div style="position:absolute; left:34%; top:55%;" class="form-group"
+                                        id="error_profileImage"><input type="file" id="profileImage" id="postimage"
                                             onchange="displayImage(this)" name="post_pic" style="display:none;"
-                                            multiple>
-                                    </div>
+                                            multiple></div>
                                     <div style="position:absolute; left:69.5%; top:25%; " id="upload"
-                                        class="form-group">
-                                        <input class="btn btn btn-default submit" type="submit" value="Upload"
-                                            name="file" id="profileImage" onClick="time_get()" />
+                                        class="form-group"><input class="btn btn btn-default submit" type="submit"
+                                            value="Upload" name="file" id="profileImage" onClick="time_get()" />
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
-                    <div style="position:absolute;left:37.4%; top:40%; height:1; width:37.05%;">
-                        <br>
-
-
+                    <div style="position:absolute;left:37.4%; top:40%; height:1; width:37.05%;"><br>
                         <div>
-
                             <div class="table-responsive" id="image_table">
-
                                 <?php
 
 
@@ -315,7 +290,6 @@ include("index_background.php");
                                     </form>
                                     <!-- this is one of the form causing the issue with this form send message to user who
                                     post i want the page note to reload when submit button is clicked -->
-
                                     <form method="post" action="" data-sendmessage-form-id="<?php echo $loop_key; ?>">
                                         <input type="hidden" name="to_user_id" display="none"
                                             value="<?php echo $user_id;?>">
@@ -325,10 +299,11 @@ include("index_background.php");
                                         <input type="hidden" name="chat_message" display="none"
                                             value="Is this Available">
                                         <button type="submit" name="send_message"
-                                            class="btn btn-success btn-round pull-center submit" data-toggle="modal"
+                                            class="btn btn-success btn-round pull-right submit" data-toggle="modal"
                                             data-target="#myModal">
                                             <i class="now-ui-icons shopping_cart-simple"></i>Send Message</button>
                                     </form>
+
                                     <!-- here you should either choose to submit call a modal here or submit this form
                                              or do both programmatically from a function -->
                                     <!-- i set it to calling the modal -->
@@ -800,23 +775,23 @@ $(document).ready(function() {
 
     // Here is where i wrote the javascript to prevent page reload for Uploading button
 
-    // $('#formdata').submit((e) => {
-    //             e.preventDefault();
-    //             $.ajax({
-    //                         url: "upload.php",
-    //                         method: "POST",
-    //                         data: new FormData(this),
-    //                         contentType: false,
-    //                         processData: false,
-    //                         success: function(data) {
-    // $('#postimage').val();
-    //             $(this).reset();
-    //             alert('post sent');
+    $('#formdata').submit((e) => {
+        e.preventDefault();
+        $.ajax({
+            url: "upload.php",
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                $('#postimage').val();
+                $(this).reset();
+                alert('post sent');
 
-    //         }
+            }
 
-    //     })
-    // });
+        })
+    });
 
 
 });

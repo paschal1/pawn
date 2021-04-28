@@ -1,5 +1,5 @@
  <?Php // background page comes in -->
- include("index_background.php");?>
+ //include("index_background.php");?>
  <!DOCTYPE html>
  <html lang="en">
 

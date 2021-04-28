@@ -122,6 +122,7 @@ include("index_background.php");
 
 <body>
 
+
     <section>
         <div class="bg">
 
@@ -147,7 +148,7 @@ include("index_background.php");
 
 
                 <div style="position:absolute; left:76.4%; top:26.2%;">
-                    <font size="4"> Pawn Chats </font>
+                    <font size="4"> </font>
                 </div>
                 <div style="position:absolute; left:85%; top:30%; color:black; font-size:11px;">
                     <font face="myFbFont">Meet with People and make more sells. </font>
@@ -163,7 +164,7 @@ include("index_background.php");
                         <thead>
 
                             <div scope="col" style="padding:15px; font-style: inherit;
-        font-family: 'Times New Roman', Times, serif; font-size:20px;">Members</div>
+        font-family: 'Times New Roman', Times, serif; font-size:20px;">Pawn Chats</div>
 
 
                         </thead>
@@ -211,7 +212,7 @@ include("index_background.php");
                                             <option value="Private"> Only me </option>
                                         </select>
                                     </div>
-                                    <div style="position:absolute; left:53%; top:35%; ">
+                                    <div style="position:absolute; left:53%; top:18.1%; ">
                                         <span><img src="img/download.JPEG" style=" height:20px; width:20px;"
                                                 id="post_img" onclick="triggerClick()" /> Add Photo </span>
                                     </div>
@@ -357,7 +358,7 @@ include("index_background.php");
                                         <input type="hidden" name="chat_message" display="none"
                                             value="Is this Available">
                                         <button type="submit" name="send_message"
-                                            class="btn btn-success btn-round pull-center submit" data-toggle="modal"
+                                            class="btn btn-success btn-round pull-right submit" data-toggle="modal"
                                             data-target="#myModal">
                                             <i class="now-ui-icons shopping_cart-simple"></i>Send Message</button>
                                     </form>

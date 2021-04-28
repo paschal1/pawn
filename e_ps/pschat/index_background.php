@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="shortcut icon" href="epsimage/icon.png" type="image/png">
@@ -13,7 +15,7 @@
 
     .sidenav {
         height: 100%;
-        width: 200px;
+        width: 100px;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -43,7 +45,7 @@
         padding: 0px 10px;
     }
 
-    @media screen and (max-height: 450px) {
+    @media screen and (max-height: 250px) {
         .sidenav {
             padding-top: 15px;
         }
@@ -58,7 +60,7 @@
 <body>
 
     <!--head background-->
-    <a href="index.php">
+    <a href="post_index.php">
 
 
 
@@ -75,7 +77,7 @@
         <div style="position:absolute;left:0%;top:110%; height:5%; width:100%; z-index:-1; "> </div>
         <div style="position:absolute;left:20%;top:105%;">
             <font face="myFbFont"> <span style=" color:#3B5998;" onMouseOver="open_developer_details()"
-                    onMouseOut="close_developer_details()" id="my_name"> (EPS PAWN) powered by Starite Inc </span>
+                    onMouseOut="close_developer_details()" id="my_name"> </span>
             </font>
         </div>
         <div style="position:absolute;left:20%;top:18%;">
