@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,12 +24,12 @@
 </head>
 <body>
 
-            <!-- Button trigger modal -->
-            <button class="btn btn-success btn-round pull-right" data-toggle="modal" data-target="#myModal">
-                <i class="now-ui-icons shopping_cart-simple"></i>Add To Cart</button>
+            Button trigger modal -->
+            <!-- <button class="btn btn-success btn-round pull-right" data-toggle="modal" data-target="#myModal">
+                <i class="now-ui-icons shopping_cart-simple"></i>Add To Cart</button> -->
 
             <!-- Modal Core -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                 <form action="" method="post" enctype="multipart/form-data">
@@ -42,14 +42,14 @@
 
                     <div class="input-append">
                         <?php
-                            echo "<select class='btn btn-warning btn-round dropdown-toggle' size='1' name='prod_qty' id='prod_qty'>";
-                            $i=1; $prod_qty=$prod_qty;
-                            while ($i <= $prod_qty ){
-                                echo "<option value=".$i.">".$i."</option>";
-                                $i++;
-                            }
-                            echo "</select>";
-                        ?>
+                        //     echo "<select class='btn btn-warning btn-round dropdown-toggle' size='1' name='prod_qty' id='prod_qty'>";
+                        //     $i=1; $prod_qty=$prod_qty;
+                        //     while ($i <= $prod_qty ){
+                        //         echo "<option value=".$i.">".$i."</option>";
+                        //         $i++;
+                        //     }
+                        //     echo "</select>";
+                        // ?>
                     </div>
                     
                   </div>
@@ -66,11 +66,11 @@
 
             
    </div>
-</div>
+</div> -->
 
 
 
-
+<!-- 
 <form method="POST" action="post_txt.php">
         
     <input type="text" id="id" placeholder="      Type Status Here" name="txt" style="with:200px; height:300px; border:1px solid;   margin-top:10%; margin-left:30%;" class="text-center" >
@@ -98,4 +98,4 @@ function ifunction(){
 $('#myModal').on('shown.bs.modal', function(){
     $('#myModalLabel').trigger('focus')
 })
-</script>
+</script> --> 
